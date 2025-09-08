@@ -1,0 +1,40 @@
+{
+  "version": 2,
+  "buildCommand": "pnpm prisma generate && pnpm build",
+  "installCommand": "pnpm install --frozen-lockfile",
+  "outputDirectory": ".next",
+  "framework": "nextjs",
+  "regions": ["iad1"],
+  "builds": [
+    { "src": "package.json", "use": "@vercel/next" }
+  ],
+  "routes": [
+    {
+      "src": "/api/(.*)",
+      "dest": "/api/$1",
+      "methods": ["GET", "POST", "PUT", "DELETE", "PATCH", "OPTIONS", "HEAD"]
+    },
+    {
+      "src": "/_next/static/(.*)",
+      "dest": "/_next/static/$1"
+    },
+    {
+      "src": "/_next/image(.*)",
+      "dest": "/_next/image$1"
+    },
+    {
+      "src": "/(.*)",
+      "dest": "/$1"
+    }
+  ],
+  "env": {
+    "NODE_ENV": "production",
+    "NEXTAUTH_URL": "https://your-production-url.vercel.app",
+    "NEXTAUTH_SECRET": "@nextauth-secret"
+  },
+  "build": {
+    "env": {
+      "NODE_ENV": "production"
+    }
+  }
+}

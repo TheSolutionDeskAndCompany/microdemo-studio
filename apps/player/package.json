@@ -1,0 +1,21 @@
+{
+  "name": "@microdemo/player",
+  "version": "0.0.1",
+  "main": "dist/player.js",
+  "module": "dist/player.js",
+  "unpkg": "dist/player.umd.js",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "lint": "eslint . --ext .ts",
+    "typecheck": "tsc --noEmit"
+  },
+  "devDependencies": {
+    "vite": "^4.4.9",
+    "typescript": "^5.1.6",
+    "eslint": "^8.48.0",
+    "@typescript-eslint/parser": "^6.7.1",
+    "@typescript-eslint/eslint-plugin": "^6.7.1"
+  },
+  "dependencies": {}
+}

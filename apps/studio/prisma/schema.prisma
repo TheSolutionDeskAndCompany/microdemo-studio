@@ -1,0 +1,43 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+datasource db {
+  provider = "sqlite"
+  // Use DATABASE_URL from environment; default to dev SQLite if not provided
+  url      = env("DATABASE_URL")
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+model Demo {
+  id        String  @id @default(cuid())
+  publicId  String  @unique
+  title     String
+  createdAt DateTime @default(now())
+  steps     Step[]
+}
+
+model Step {
+  id          String  @id @default(cuid())
+  index       Int
+  action      String
+  selector    String?
+  selectorAlt String?
+  textSnippet String?
+  ariaRole    String?
+  bboxX       Int?
+  bboxY       Int?
+  bboxW       Int?
+  bboxH       Int?
+  scrollTop   Int?
+  scrollLeft  Int?
+  valueBefore String?
+  valueAfter  String?
+  delayMs     Int?
+  screenshotUrl String?
+  caption     String?
+  demo        Demo   @relation(fields: [demoId], references: [id], onDelete: Cascade)
+  demoId      String
+}

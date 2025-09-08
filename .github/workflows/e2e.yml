@@ -1,0 +1,45 @@
+name: E2E
+
+on: [push, pull_request]
+
+jobs:
+  e2e:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v3
+        with:
+          version: 9.7.1
+          
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: 'pnpm'
+          
+      - name: Install dependencies
+        run: pnpm i
+        
+      - name: Start Studio server
+        run: pnpm --filter @microdemo/studio dev &
+        
+      - name: Wait for server to be ready
+        run: |
+          npx wait-on http://localhost:3000 --timeout 30000
+          
+      - name: Install Playwright
+        run: pnpm -w exec playwright install --with-deps
+        
+      - name: Run E2E tests
+        run: pnpm -w exec playwright test
+        
+      - name: Build Studio
+        run: pnpm --filter @microdemo/studio build
+        
+      - name: Build Player
+        run: pnpm --filter @microdemo/player build
+        
+      - name: Build Extension
+        run: pnpm --filter @microdemo/extension build

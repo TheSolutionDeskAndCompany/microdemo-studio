@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <title>Microdemo Player Test</title>
+  <style>
+    body { 
+      font-family: system-ui, Arial, sans-serif; 
+      max-width: 800px; 
+      margin: 0 auto; 
+      padding: 20px; 
+      line-height: 1.6;
+    }
+    .player-container { 
+      margin: 20px 0; 
+      padding: 20px; 
+      border: 1px solid #ddd; 
+      border-radius: 8px; 
+      background: #f9f9f9;
+    }
+    pre {
+      background: #f5f5f5;
+      padding: 10px;
+      border-radius: 4px;
+      overflow-x: auto;
+    }
+  </style>
+  <script>window.__MICRODEMO_STUDIO__ = "http://localhost:3002";</script>
+  <script type="module" src="http://localhost:5173/player.js"></script>
+</head>
+<body>
+  <h1>Microdemo Player Test</h1>
+  
+  <div class="player-container">
+    <h2>Demo Player</h2>
+    <microdemo-player 
+      data-id="vvxi7n6z"
+      style="width: 100%; min-height: 400px; border: 1px solid #eee; border-radius: 4px;"
+    ></microdemo-player>
+  </div>
+
+  <div class="player-container">
+    <h2>How to Use</h2>
+    <p>This test page is loading a demo with ID: <code>vvxi7n6z</code></p>
+    
+    <h3>Prerequisites:</h3>
+    <ol>
+      <li>Studio server running on <code>http://localhost:3002</code></li>
+      <li>Player dev server running on <code>http://localhost:5173</code></li>
+    </ol>
+
+    <h3>To test with a new demo:</h3>
+    <pre>curl -X POST http://localhost:3002/api/demos \
+  -H "content-type: application/json" \
+  -d '{"title":"New Demo","steps":[{"index":0,"action":"click","selector":"#example","caption":"Example click"}]}'
+</pre>
+    <p>Then update the <code>data-id</code> attribute in the <code>microdemo-player</code> element.</p>
+  </div>
+</body>
+</html>

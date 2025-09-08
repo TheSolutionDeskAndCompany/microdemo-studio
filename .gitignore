@@ -1,0 +1,12 @@
+node_modules
+.env
+.env.*
+.DS_Store
+.vscode
+dist
+.out
+build
+.next
+*.log
+*.tsbuildinfo
+apps/extension/.output

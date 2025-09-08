@@ -1,0 +1,15 @@
+{
+  "extends": "../../tsconfig.base.json",
+  "compilerOptions": {
+    "outDir": ".output",
+    "typeRoots": [
+      "./types",
+      "./node_modules/@types",
+      "../../node_modules/@types"
+    ]
+  },
+  "include": [
+    "entrypoints",
+    "types/wxt-ambient.d.ts"
+  ]
+}
