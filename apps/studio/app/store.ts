@@ -1,5 +1,6 @@
 import { prisma } from "../lib/prisma";
 import type { Demo } from "@microdemo/schema";
+import { z } from "zod";
 import { Demo as ZDemo } from "@microdemo/schema";
 
 export interface DemoListItem {
@@ -31,8 +32,9 @@ export interface DemoDetails {
   steps: DemoStep[];
 }
 
-// In-memory fallback for local dev if DB is unavailable
-const mem: Demo[] = [];
+// In-memory fallback for local dev if DB is unavailable (shared across modules)
+const gmem = (globalThis as any);
+const mem: Demo[] = (gmem.__MICRODEMO_MEM__ = gmem.__MICRODEMO_MEM__ || []);
 
 export async function listDemos(): Promise<DemoListItem[]> {
   try {
@@ -59,7 +61,7 @@ export async function getDemo(publicId: string): Promise<DemoDetails | null> {
       where: { publicId },
       include: { steps: { orderBy: { index: "asc" } } },
     });
-    if (!d) return null;
+    if (!d) throw new Error('not-found');
     return {
       title: d.title,
       publicId: d.publicId,
@@ -92,7 +94,8 @@ export async function getDemo(publicId: string): Promise<DemoDetails | null> {
 }
 
 export async function createDemo(payload: unknown): Promise<{ publicId: string }> {
-  const parsed = ZDemo.parse(payload);
+  const DemoInput = ZDemo.extend({ publicId: z.string().optional() });
+  const parsed = DemoInput.parse(payload);
   const publicId = parsed.publicId ?? Math.random().toString(36).slice(2, 10);
   try {
     await prisma.demo.create({
