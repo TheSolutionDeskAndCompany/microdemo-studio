@@ -1,47 +1,77 @@
 # Microdemo Studio
 
-Monorepo for Microdemo Studio product.
+Create, share, and embed short interactive product demos captured from real user flows.
 
-## Apps
+Record once in your browser, publish to Studio, and drop a lightweight web component into any page to play it back.
 
-- **extension**: Chrome/Edge extension (Manifest V3) built with WXT + TypeScript. Captures browser interactions and emits Step JSON.
-- **studio**: Next.js 14 app with in-memory API to accept Demo JSON, list demos, and serve public pages.
-- **player**: Vite-built Web Component (<microdemo-player>) that loads and renders Demo JSON steps.
+## Why Microdemo
 
-## Packages
+- Capture authentically: One‑click recording from a browser extension.
+- Share instantly: Public, immutable demo links you can send or embed.
+- Safe by design: PII masking and server‑side filtering of sensitive fields.
+- Frictionless embed: A single custom element that fetches and renders the demo.
 
-- **schema**: Zod schemas for Demo and Step.
-- **utils**: Helpers for masking PII and safe CSS selectors.
-- **ui**: Minimal React UI primitives (Button component).
+## What’s Inside
 
-## Quickstart
+- Studio (Next.js): API + minimal UI to store and serve demos.
+- Player (Web Component): Small, framework‑agnostic embed.
+- Extension (Chrome MV3 via WXT): Recorder that turns interactions into a demo.
+- Packages: Shared schema (Zod), utilities, and lightweight UI bits.
+
+## Quickstart (dev)
+
+Prereqs: Node 20+, pnpm 9
 
 ```bash
 corepack enable
 corepack prepare pnpm@9.7.1 --activate
 pnpm i
-pnpm dev
 ```
 
-To run individual apps or packages:
+Studio (API + UI)
 
 ```bash
-pnpm --filter @microdemo/extension dev
-pnpm --filter @microdemo/studio dev
+# From repo root
+cd apps/studio
+DATABASE_URL="file:./prisma/dev.db" NODE_ENV=development \
+  pnpm prisma generate && pnpm dev
+```
+
+Player (embed component)
+
+```bash
 pnpm --filter @microdemo/player dev
 ```
 
-## Scripts
+Extension (recorder)
 
-- `pnpm dev`: Runs all dev servers in parallel.
-- `pnpm build`: Builds all packages and apps.
-- `pnpm lint`: Lints all packages and apps.
-- `pnpm typecheck`: Runs TypeScript type checks.
-- `pnpm test`: Runs tests (to be added).
+```bash
+pnpm --filter @microdemo/extension build
+# Load the output from apps/extension/.output/chrome-mv3 in your browser
+```
 
-## Next Tasks
+Tip: The Player can be pointed at any Studio base URL by setting `window.__MICRODEMO_STUDIO__` before loading it.
 
-- Replace Studio in-memory store with Prisma + Neon.
-- Add /api/public/:id and fetch that in the Player.
-- Add masking E2E tests with Playwright.
-- Add brand palette tokens (teal/fuchsia/mahogany) in CSS for Studio + Extension popup.
+## Build & CI
+
+```bash
+pnpm -r typecheck
+pnpm -r lint
+pnpm -r build
+```
+
+GitHub Actions runs typecheck, lint, and build on every push/PR.
+
+## Security
+
+- CORS is centrally enforced and locked down for production origins.
+- Standard security headers are applied (HSTS in production).
+- Secrets are not committed; use environment variables for deployment.
+
+## License
+
+MIT — commercial licensing available upon request.
+
+## Get In Touch
+
+Interested in using Microdemo in your product or want a demo? Contact us to discuss plans and integration options.
