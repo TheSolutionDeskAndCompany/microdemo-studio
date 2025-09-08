@@ -14,7 +14,8 @@
     "test": "pnpm -r test",
     "test:e2e": "playwright test tests/e2e.spec.ts --project=chromium",
     "build:extension:prod": "node scripts/build-extension.js production",
-    "build:extension:stage": "node scripts/build-extension.js staging"
+    "build:extension:stage": "node scripts/build-extension.js staging",
+    "seed:demo": "node scripts/seed-demo.js"
   },
   "devDependencies": {
     "@playwright/test": "^1.55.0",

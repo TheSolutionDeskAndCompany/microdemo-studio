@@ -102,6 +102,28 @@ export async function middleware(request: NextRequest) {
   if (process.env.NODE_ENV === 'production') {
     response.headers.set('Strict-Transport-Security', 'max-age=31536000; includeSubDomains; preload');
   }
+  // Content Security Policy (conservative; relaxed in development)
+  const cspProd = [
+    "default-src 'self'",
+    "base-uri 'self'",
+    "form-action 'self'",
+    "frame-ancestors 'self'",
+    "img-src 'self' data: blob:",
+    "font-src 'self' data:",
+    "style-src 'self' 'unsafe-inline'",
+    // Allow API + same-origin fetch
+    "connect-src 'self'"
+  ].join('; ');
+  const cspDev = [
+    "default-src 'self'",
+    "img-src 'self' data: blob:",
+    "font-src 'self' data:",
+    "style-src 'self' 'unsafe-inline'",
+    // Next.js dev server requires eval and websockets
+    "script-src 'self' 'unsafe-eval' 'unsafe-inline'",
+    "connect-src * data: blob:"
+  ].join('; ');
+  response.headers.set('Content-Security-Policy', process.env.NODE_ENV === 'production' ? cspProd : cspDev);
 
   return response;
 }

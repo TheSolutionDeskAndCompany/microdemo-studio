@@ -62,6 +62,15 @@ pnpm -r build
 
 GitHub Actions runs typecheck, lint, and build on every push/PR.
 
+## E2E and Seed
+
+- E2E: requires Studio running on `http://localhost:3000`.
+  - Install browsers: `pnpm -w exec playwright install --with-deps`
+  - Start Studio: `pnpm --filter @microdemo/studio dev`
+  - Run: `pnpm -w exec playwright test apps/studio/tests/e2e.spec.ts --project=chromium`
+- Seed a sample demo (server must be running):
+  - `pnpm seed:demo` (or set `STUDIO_URL` env to target a different host)
+
 ## Security
 
 - CORS is centrally enforced and locked down for production origins.
