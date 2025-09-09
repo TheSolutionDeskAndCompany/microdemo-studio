@@ -1,6 +1,6 @@
 {
   "name": "@microdemo/player",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "main": "dist/player.js",
   "module": "dist/player.js",
   "unpkg": "dist/player.umd.js",
