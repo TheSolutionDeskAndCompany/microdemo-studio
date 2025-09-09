@@ -23,8 +23,7 @@
    ```
    DATABASE_URL="postgresql://USER:PASSWORD@HOST:5432/DB?sslmode=require"
    NODE_ENV="production"
-   NEXTAUTH_SECRET="your-secure-secret" # Generate with: openssl rand -base64 32
-   NEXTAUTH_URL="https://your-vercel-app.vercel.app"
+   CORS_ALLOWED_ORIGINS="https://thesolutiondeskandcompany.github.io"
    ```
 
 3. **Deploy**
@@ -94,7 +93,7 @@ After deployment, verify everything works:
      <script>
        window.__MICRODEMO_STUDIO__ = "https://your-vercel-app.vercel.app";
      </script>
-     <script type="module" src="https://your-cdn-url/player.js"></script>
+     <script type="module" src="https://thesolutiondeskandcompany.github.io/microdemo-studio/player.es.js"></script>
    </head>
    <body>
      <microdemo-player data-id="YOUR_DEMO_ID"></microdemo-player>

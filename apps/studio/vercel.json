@@ -29,8 +29,8 @@
   ],
   "env": {
     "NODE_ENV": "production",
-    "NEXTAUTH_URL": "https://your-production-url.vercel.app",
-    "NEXTAUTH_SECRET": "@nextauth-secret"
+    "DATABASE_URL": "@database-url",
+    "CORS_ALLOWED_ORIGINS": "https://thesolutiondeskandcompany.github.io"
   },
   "build": {
     "env": {

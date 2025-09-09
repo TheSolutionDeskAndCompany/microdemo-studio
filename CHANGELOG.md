@@ -4,3 +4,7 @@
 - Safe DOM rendering (no innerHTML for dynamic strings).
 - Works against Studio public API via `window.__MICRODEMO_STUDIO__` or default.
 
+## @microdemo/player 0.1.1
+
+- Add GitHub Pages deploy workflow for Player CDN.
+- README: add CDN embed instructions and badges.
