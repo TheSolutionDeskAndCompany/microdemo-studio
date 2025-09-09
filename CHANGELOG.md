@@ -12,3 +12,7 @@
 ## @microdemo/player 0.1.2
 
 - Pages CDN: add canonical `player.js` (copy of ES module) for simpler embeds.
+
+## @microdemo/player 0.1.3
+
+- Actions/Pages enabled; publish verification tag.
