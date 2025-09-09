@@ -23,11 +23,14 @@ jobs:
         run: pnpm i
         
       - name: Start Studio server
+        env:
+          PORT: 3000
+          NEXT_TELEMETRY_DISABLED: 1
         run: pnpm --filter @microdemo/studio dev &
         
       - name: Wait for server to be ready
         run: |
-          npx wait-on http://localhost:3000 --timeout 30000
+          npx wait-on http://localhost:3000 --timeout 120000
           
       - name: Install Playwright
         run: pnpm -w exec playwright install --with-deps
