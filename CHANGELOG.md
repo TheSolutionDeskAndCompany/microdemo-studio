@@ -20,3 +20,7 @@
 ## @microdemo/player 0.1.4
 
 - CI: Install with `--ignore-scripts` to avoid workspace postinstall steps; improves reliability for Releases/Pages.
+
+## @microdemo/player 0.1.5
+
+- Retag to re-run Release + Pages after enabling Actions/Pages; verify CDN publish.
