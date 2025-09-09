@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Microdemo Player Demo</title>
+  <style>
+    body { font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif; margin: 0; padding: 24px; background: #0b0f13; color: #e5e7eb; }
+    .wrap { max-width: 900px; margin: 0 auto; }
+    header { display: flex; align-items: center; gap: 12px; margin-bottom: 16px; }
+    header h1 { margin: 0; font-size: 22px; }
+    .note { color: #9ca3af; margin-bottom: 16px; }
+    .card { background: #0f172a; border: 1px solid #1f2937; border-radius: 8px; padding: 16px; }
+  </style>
+  <script>
+    // Replace with your deployed Studio URL and a real demo id
+    window.__MICRODEMO_STUDIO__ = 'https://your-studio-domain';
+  </script>
+  <script type="module" src="./player.js"></script>
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <h1>Microdemo Player Demo</h1>
+    </header>
+    <p class="note">This demo uses the hosted Player. Set <code>window.__MICRODEMO_STUDIO__</code> to your Studio base URL and provide a real <code>data-id</code>.</p>
+    <div class="card">
+      <microdemo-player data-id="REPLACE_WITH_DEMO_ID"></microdemo-player>
+    </div>
+  </div>
+</body>
+</html>
+

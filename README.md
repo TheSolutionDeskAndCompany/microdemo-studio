@@ -13,6 +13,9 @@
   <a href="https://thesolutiondeskandcompany.github.io/microdemo-studio/player.js">
     <img src="https://img.shields.io/badge/player-cdn-green" alt="Player CDN"/>
   </a>
+  <a href="https://thesolutiondeskandcompany.github.io/microdemo-studio/demo.html">
+    <img src="https://img.shields.io/badge/live-demo-link-blue" alt="Live Demo"/>
+  </a>
 </p>
 
 # Microdemo Studio

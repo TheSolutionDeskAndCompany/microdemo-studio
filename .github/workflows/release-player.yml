@@ -30,6 +30,25 @@ jobs:
       - name: Build Player
         run: pnpm --filter @microdemo/player build
 
+      - name: Upload dist artifact (always)
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: player-dist
+          path: apps/player/dist
+          if-no-files-found: warn
+
+      - name: Upload debug logs (on failure)
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: debug-logs
+          path: |
+            **/npm-debug.log
+            **/pnpm-debug.log
+            **/yarn-error.log
+          if-no-files-found: warn
+
       - name: Create GitHub Release
         uses: softprops/action-gh-release@v2
         with:
