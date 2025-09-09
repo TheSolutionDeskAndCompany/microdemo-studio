@@ -24,8 +24,8 @@ jobs:
           node-version: 20
           cache: 'pnpm'
 
-      - name: Install deps
-        run: pnpm install --frozen-lockfile
+      - name: Install deps (no scripts)
+        run: pnpm install --frozen-lockfile --ignore-scripts
 
       - name: Build Player
         run: pnpm --filter @microdemo/player build
@@ -38,4 +38,3 @@ jobs:
           files: |
             apps/player/dist/*
           generate_release_notes: true
-

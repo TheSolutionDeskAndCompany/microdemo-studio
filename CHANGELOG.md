@@ -16,3 +16,7 @@
 ## @microdemo/player 0.1.3
 
 - Actions/Pages enabled; publish verification tag.
+
+## @microdemo/player 0.1.4
+
+- CI: Install with `--ignore-scripts` to avoid workspace postinstall steps; improves reliability for Releases/Pages.

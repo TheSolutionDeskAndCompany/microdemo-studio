@@ -22,8 +22,8 @@ jobs:
         with:
           node-version: 20
           cache: 'pnpm'
-      - name: Install dependencies
-        run: pnpm install --frozen-lockfile
+      - name: Install dependencies (no scripts)
+        run: pnpm install --frozen-lockfile --ignore-scripts
       - name: Build Player
         run: pnpm --filter @microdemo/player build
       - name: Create canonical filename
