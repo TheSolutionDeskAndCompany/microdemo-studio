@@ -26,6 +26,9 @@ jobs:
         run: pnpm install --frozen-lockfile
       - name: Build Player
         run: pnpm --filter @microdemo/player build
+      - name: Create canonical filename
+        run: |
+          cp apps/player/dist/player.es.js apps/player/dist/player.js
       - name: Upload Pages Artifact
         uses: actions/upload-pages-artifact@v3
         with:
@@ -40,4 +43,3 @@ jobs:
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
-

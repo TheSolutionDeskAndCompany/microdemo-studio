@@ -8,3 +8,7 @@
 
 - Add GitHub Pages deploy workflow for Player CDN.
 - README: add CDN embed instructions and badges.
+
+## @microdemo/player 0.1.2
+
+- Pages CDN: add canonical `player.js` (copy of ES module) for simpler embeds.
