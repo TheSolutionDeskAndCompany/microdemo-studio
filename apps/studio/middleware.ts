@@ -12,7 +12,7 @@ const RATE_LIMIT = {
 // In-memory store for rate limiting
 const rateLimitStore = new Map<string, { count: number; resetAt: number }>();
 
-// List of allowed origins (add your production domains here)
+// List of allowed origins; can be extended via env `CORS_ALLOWED_ORIGINS` (comma-separated)
 const allowedOrigins = [
   'http://localhost:3000',
   'http://localhost:3001',
@@ -20,6 +20,7 @@ const allowedOrigins = [
   'https://your-vercel-app.vercel.app',
   // Add your production player domain here
   'https://*.vercel.app',
+  ...(process.env.CORS_ALLOWED_ORIGINS?.split(',').map(s => s.trim()).filter(Boolean) || [])
 ];
 
 export async function middleware(request: NextRequest) {

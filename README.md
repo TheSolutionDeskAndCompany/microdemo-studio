@@ -1,5 +1,18 @@
 <p align="center">
   <img src="docs/banner.svg" alt="Microdemo Studio" width="720" />
+  <br/>
+  <a href="https://github.com/TheSolutionDeskAndCompany/microdemo-studio/actions/workflows/ci.yml">
+    <img src="https://github.com/TheSolutionDeskAndCompany/microdemo-studio/actions/workflows/ci.yml/badge.svg?branch=main" alt="CI"/>
+  </a>
+  <a href="https://github.com/TheSolutionDeskAndCompany/microdemo-studio/actions/workflows/e2e.yml">
+    <img src="https://github.com/TheSolutionDeskAndCompany/microdemo-studio/actions/workflows/e2e.yml/badge.svg?branch=main" alt="E2E"/>
+  </a>
+  <a href="https://github.com/TheSolutionDeskAndCompany/microdemo-studio/releases">
+    <img src="https://img.shields.io/github/v/release/TheSolutionDeskAndCompany/microdemo-studio?display_name=tag" alt="Release"/>
+  </a>
+  <a href="https://thesolutiondeskandcompany.github.io/microdemo-studio/player.es.js">
+    <img src="https://img.shields.io/badge/player-cdn-green" alt="Player CDN"/>
+  </a>
 </p>
 
 # Microdemo Studio
