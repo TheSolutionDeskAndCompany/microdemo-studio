@@ -1,3 +1,7 @@
+<p align="center">
+  <img src="docs/banner.svg" alt="Microdemo Studio" width="720" />
+</p>
+
 # Microdemo Studio
 
 Create, share, and embed short interactive product demos captured from real user flows.
@@ -70,6 +74,23 @@ GitHub Actions runs typecheck, lint, and build on every push/PR.
   - Run: `pnpm -w exec playwright test apps/studio/tests/e2e.spec.ts --project=chromium`
 - Seed a sample demo (server must be running):
   - `pnpm seed:demo` (or set `STUDIO_URL` env to target a different host)
+
+## Player CDN via GitHub Pages
+
+- Player assets are built on tags like `player-v0.x.y` and deployed to GitHub Pages.
+- After a release tag, your Player will be available at:
+  - `https://thesolutiondeskandcompany.github.io/microdemo-studio/player.es.js`
+  - `https://thesolutiondeskandcompany.github.io/microdemo-studio/player.umd.js`
+
+Embed example:
+
+```html
+<script>
+  window.__MICRODEMO_STUDIO__ = "https://your-studio-domain"; // optional override
+</script>
+<script type="module" src="https://thesolutiondeskandcompany.github.io/microdemo-studio/player.es.js"></script>
+<microdemo-player data-id="YOUR_DEMO_ID"></microdemo-player>
+```
 
 ## Security
 

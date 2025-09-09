@@ -108,11 +108,15 @@ export async function middleware(request: NextRequest) {
     "base-uri 'self'",
     "form-action 'self'",
     "frame-ancestors 'self'",
+    "frame-src 'none'",
+    "object-src 'none'",
     "img-src 'self' data: blob:",
     "font-src 'self' data:",
+    // Next.js inline styles are common; consider removing 'unsafe-inline' if fully hashed CSS
     "style-src 'self' 'unsafe-inline'",
     // Allow API + same-origin fetch
-    "connect-src 'self'"
+    "connect-src 'self'",
+    "upgrade-insecure-requests"
   ].join('; ');
   const cspDev = [
     "default-src 'self'",

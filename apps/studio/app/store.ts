@@ -33,8 +33,9 @@ export interface DemoDetails {
 }
 
 // In-memory fallback for local dev if DB is unavailable (shared across modules)
-const gmem = (globalThis as any);
-const mem: Demo[] = (gmem.__MICRODEMO_MEM__ = gmem.__MICRODEMO_MEM__ || []);
+interface GlobalWithMem { __MICRODEMO_MEM__?: Demo[] }
+const gmem = globalThis as unknown as GlobalWithMem;
+const mem: Demo[] = (gmem.__MICRODEMO_MEM__ ??= []);
 
 export async function listDemos(): Promise<DemoListItem[]> {
   try {
