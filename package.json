@@ -15,10 +15,13 @@
     "test:e2e": "playwright test tests/e2e.spec.ts --project=chromium",
     "build:extension:prod": "node scripts/build-extension.js production",
     "build:extension:stage": "node scripts/build-extension.js staging",
-    "seed:demo": "node scripts/seed-demo.js"
+    "seed:demo": "node scripts/seed-demo.js",
+    "gif:demo": "node scripts/record-demo.js"
   },
   "devDependencies": {
     "@playwright/test": "^1.55.0",
+    "playwright": "^1.55.0",
+    "ffmpeg-static": "^5.2.0",
     "@typescript-eslint/eslint-plugin": "^6.7.1",
     "@typescript-eslint/parser": "^6.7.1",
     "eslint": "^8.48.0",
